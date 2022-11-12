@@ -55,13 +55,13 @@ $BASEDIR/libwebp/configure --prefix=$PREFIX --disable-shared --enable-static
 make
 make install
 
-mkdir -p $BASEDIR/giflib
-tar -xjf $BASEDIR/giflib-5.1.4.tar.bz2 -C $BASEDIR/giflib --strip-components 1
-mkdir -p $BUILDDIR/giflib
-cd $BUILDDIR/giflib
-$BASEDIR/giflib/configure --prefix=$PREFIX --disable-shared
-make
-make install
+# mkdir -p $BASEDIR/giflib
+# tar -xjf $BASEDIR/giflib-5.1.4.tar.bz2 -C $BASEDIR/giflib --strip-components 1
+# mkdir -p $BUILDDIR/giflib
+# cd $BUILDDIR/giflib
+# $BASEDIR/giflib/configure --prefix=$PREFIX --disable-shared
+# make
+# make install
 
 mkdir -p $BASEDIR/opencv
 tar -xzf $BASEDIR/opencv-3.2.0.tar.gz -C $BASEDIR/opencv --strip-components 1
@@ -69,6 +69,6 @@ cd $BASEDIR/opencv
 patch -p1 < $BASEDIR/0001-export-exif-orientation.patch
 mkdir -p $BUILDDIR/opencv
 cd $BUILDDIR/opencv
-cmake $BASEDIR/opencv -DWITH_JPEG=ON -DWITH_PNG=ON -DWITH_WEBP=ON -DWITH_JASPER=OFF -DWITH_TIFF=OFF -DWITH_OPENEXR=OFF -DWITH_OPENCL=OFF -DBUILD_JPEG=OFF -DBUILD_PNG=OFF -DBUILD_ZLIB=OFF -DENABLE_SSE41=ON -DENABLE_SSE42=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_DOCS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_TESTS=OFF -DCMAKE_LIBRARY_PATH=$PREFIX/LIB -DCMAKE_INCLUDE_PATH=$PREFIX/INCLUDE -DCMAKE_INSTALL_PREFIX=$PREFIX
+cmake $BASEDIR/opencv -DWITH_JPEG=ON -DWITH_PNG=ON -DWITH_WEBP=ON -DWITH_JASPER=OFF -DWITH_GIF=OFF -DWITH_TIFF=OFF -DWITH_OPENEXR=OFF -DWITH_OPENCL=OFF -DBUILD_JPEG=OFF -DBUILD_PNG=OFF -DBUILD_ZLIB=OFF -DENABLE_SSE41=ON -DENABLE_SSE42=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_DOCS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_TESTS=OFF -DCMAKE_LIBRARY_PATH=$PREFIX/LIB -DCMAKE_INCLUDE_PATH=$PREFIX/INCLUDE -DCMAKE_INSTALL_PREFIX=$PREFIX
 make
 make install
