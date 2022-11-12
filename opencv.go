@@ -230,10 +230,10 @@ func isGIF(maybeGIF []byte) bool {
 }
 
 func NewDecoder(buf []byte) (Decoder, error) {
-	isBufGIF := isGIF(buf)
-	if isBufGIF {
-		return newGifDecoder(buf)
-	}
+	// isBufGIF := isGIF(buf)
+	// if isBufGIF {
+	// 	return newGifDecoder(buf)
+	// }
 
 	return newOpenCVDecoder(buf)
 }
@@ -307,9 +307,9 @@ func (d *OpenCVDecoder) DecodeTo(f *Framebuffer) error {
 }
 
 func NewEncoder(ext string, decodedBy Decoder, dst []byte) (Encoder, error) {
-	if strings.ToLower(ext) == ".gif" {
-		return newGifEncoder(decodedBy, dst)
-	}
+	// if strings.ToLower(ext) == ".gif" {
+	// 	return newGifEncoder(decodedBy, dst)
+	// }
 
 	return newOpenCVEncoder(ext, decodedBy, dst)
 }
